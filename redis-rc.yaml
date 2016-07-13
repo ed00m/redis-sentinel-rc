@@ -198,7 +198,7 @@ resources:
     properties:
       username: root
       private_key: { get_attr: [ssh_key, private_key] }
-      host: { get_attr: [redis_master, accessIPv4] }
+      host: { get_attr: [redis_master, networks, private, 0] }
       kitchen: { get_param: kitchen }
       chef_version: { get_param: chef_version }
       node:
@@ -215,7 +215,7 @@ resources:
             - sentinel_port: { get_param: sentinel_port }
               port:          { get_param: sentinel_port }
               name: 'cluster'
-              master_ip:     { get_attr: [redis_master, accessIPv4] }
+              master_ip:     { get_attr: [redis_master, networks, { get_param: rc_network_name }, 0] }
               master_port:   { get_param: redis_port }
               auth-pass:     { get_attr: [redis_password, value] }
               logfile: /var/log/sentinel.log
@@ -238,7 +238,7 @@ resources:
           ssh_keypair_name: { get_resource: ssh_key }
           ssh_private_key:  { get_attr: [ssh_key, private_key] }
           redis_password:   { get_attr: [redis_password, value] }
-          master_ip:        { get_attr: [redis_master, accessIPv4] }
+          master_ip:        { get_attr: [redis_master, networks, { get_param: rc_network_name }, 0] }
           redis_port:       { get_param: redis_port }
           sentinel_port:    { get_param: sentinel_port }
           redis_version:    { get_param: redis_version }
