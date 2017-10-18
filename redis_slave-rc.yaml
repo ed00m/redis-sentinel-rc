@@ -8,16 +8,16 @@ parameters:
   flavor:
     description: Flavor for Cloud Servers
     type: string
-    default: 2 GB General Purpose v1
+    default: 8 GB General Purpose v1
 
   image:
     label: Server Image
     description: Operating system to use for created servers
     type: string
-    default: Ubuntu 12.04 LTS (Precise Pangolin) (PVHVM)
+    default: Debian 9 (Stretch) (PVHVM)
     constraints:
     - allowed_values:
-      - Ubuntu 12.04 LTS (Precise Pangolin) (PVHVM)
+      - Debian 9 (Stretch) (PVHVM)
     description: Must be a supported operating system.
 
   redis_version:
@@ -64,7 +64,7 @@ parameters:
     label: Kitchen
     description: URL for the kitchen to use
     type: string
-    default: https://github.com/rackspace-orchestration-templates/redis-sentinel-rc
+    default: https://github.com/ed00m/redis-sentinel-rc
 
   chef_version:
     label: Chef Version
