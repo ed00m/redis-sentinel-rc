@@ -68,10 +68,10 @@ parameters:
       Server image used for all servers that are created as a part of this
       deployment
     type: string
-    default: Ubuntu 12.04 LTS (Precise Pangolin) (PVHVM)
+    default: Debian 9 (Stretch) (PVHVM)
     constraints:
     - allowed_values:
-      - Ubuntu 12.04 LTS (Precise Pangolin) (PVHVM)
+      - Debian 9 (Stretch) (PVHVM)
       description: Must be a supported operating system.
 
   redis_version:
@@ -133,7 +133,7 @@ parameters:
     label: Kitchen
     description: URL for the kitchen to use
     type: string
-    default: https://github.com/rackspace-orchestration-templates/redis-sentinel-rc
+    default: https://github.com/ed00m/redis-sentinel-rc
 
   chef_version:
     label: Chef Version
@@ -146,7 +146,7 @@ parameters:
     description: |
       URL to the Child template that will provision Redis slave nodes.
     type: string
-    default: https://raw.githubusercontent.com/rackspace-orchestration-templates/redis-sentinel-rc/master/redis_slave-rc.yaml
+    default: https://raw.githubusercontent.com/ed00m/redis-sentinel-rc/master/redis_slave-rc.yaml
 
   rc_network_name:
     type: string
